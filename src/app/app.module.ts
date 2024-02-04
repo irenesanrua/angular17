@@ -8,6 +8,8 @@ import { CochesComponent } from './coches/coches.component';
 import { HomeComponent } from './home/home.component';
 import { AlumnadoComponent } from './alumnado/alumnado.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,12 @@ import { AppHeaderComponent } from './app-header/app-header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
