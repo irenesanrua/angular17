@@ -1,6 +1,10 @@
 export class Coche {
 
-    constructor(public id:string,public nombre:string, public descripcion: string){      
+    constructor(
+        public id:string,
+        public marca:string, 
+        public modelo: string,
+        public matricula: string){      
     }
     
 }
