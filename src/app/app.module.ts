@@ -10,6 +10,7 @@ import { AlumnadoComponent } from './alumnado/alumnado.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PeliculasComponent } from './peliculas/peliculas.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AlumnadoComponent,
     AppHeaderComponent,
+    PeliculasComponent,
   ],
   imports: [
     BrowserModule,
