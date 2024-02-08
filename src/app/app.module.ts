@@ -7,6 +7,7 @@ import { CochesComponent } from './coches/coches.component';
 import { HomeComponent } from './home/home.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { HttpClientModule } from '@angular/common/http';
+//import {NgbModule} from @ng-bootstrap/ng-bootstrap,
 import { FormsModule } from '@angular/forms';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 
@@ -22,7 +23,8 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+   // NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
