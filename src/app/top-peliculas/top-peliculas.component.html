@@ -1,13 +1,14 @@
 <div class="container text-center p-4 mt-4">
-    <h1 class="display-3">PELICULAS POPULARES</h1>
+    <h1 class="display-3">TOP RATED</h1>
+    <h1 class="display-6">Películas con la mejor puntuación</h1>
   </div>
   
 <div class="container">
 <div class="row">
-  <div class="col-md-4" *ngFor="let movie of popularMovies; let i = index" [class.active]="i === 0">
+  <div class="col-md-4" *ngFor="let movie of topMovies; let i = index" [class.active]="i === 0">
     <div class="card mb-4">
       <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="Movie Poster">
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"  [ngClass]="{'bg-warning text-dark': movie.vote_average >= 8.55, 'badge bg-info text-dark': movie.vote_average < 8.55 }">
           {{ (movie.vote_average).toFixed(2)}}
           <span class="visually-hidden">unread messages</span>
       </span>

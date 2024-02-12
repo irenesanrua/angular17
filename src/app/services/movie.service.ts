@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
 export class MovieService {
   private apiKey = 'e79fbfbf56f5c1d7cbb5c4d71bbc9693';
   private apiUrl = 'https://api.themoviedb.org/3/movie/popular';
+  private apiUrl2 = 'https://api.themoviedb.org/3/movie/top_rated';
+
 
   constructor(private http: HttpClient) { }
 
   getPopularMovies(page: number = 1): Observable<any> {
     const url = `${this.apiUrl}?api_key=${this.apiKey}&page=${page}`;
+    return this.http.get<any>(url);
+  }
+
+  getTopMovies(page: number = 1): Observable<any> {
+    const url = `${this.apiUrl2}?api_key=${this.apiKey}&page=${page}`;
     return this.http.get<any>(url);
   }
 }

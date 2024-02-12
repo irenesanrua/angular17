@@ -1,7 +1,7 @@
 .container-carrusel {
-    width: 700px; // Ancho deseado del contenedor
-    height: 200px; // Altura deseada del contenedor
-    display: flex;
+    width: 100%; // Ancho deseado del contenedor
+    height: 100%; // Altura deseada del contenedor
+    //display: flex;
     justify-content: center; // Centrar horizontalmente en el contenedor
     align-items: center; // Centrar verticalmente en el contenedor
     margin: 0 auto; // Centrar el contenedor horizontalmente en la página
