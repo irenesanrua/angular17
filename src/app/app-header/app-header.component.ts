@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppHeaderComponent implements OnInit {
   popularMovies: any[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private router: Router, private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.loadPopularMovies();
@@ -24,4 +24,9 @@ export class AppHeaderComponent implements OnInit {
       this.popularMovies = response.results.sort((a: any, b: any) => b.popularity - a.popularity).slice(0, 3);
     });
   }
+
+  goToSearch(): void {
+    this.router.navigate(['/buscador']);
+  }
+  
 }

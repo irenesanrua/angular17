@@ -10,7 +10,6 @@ export class MovieService {
   private apiUrl = 'https://api.themoviedb.org/3/movie/popular';
   private apiUrl2 = 'https://api.themoviedb.org/3/movie/top_rated';
 
-
   constructor(private http: HttpClient) { }
 
   getPopularMovies(page: number = 1): Observable<any> {
@@ -22,7 +21,13 @@ export class MovieService {
     const url = `${this.apiUrl2}?api_key=${this.apiKey}&page=${page}`;
     return this.http.get<any>(url);
   }
+
+  buscarPeliculas(query: string): Observable<any> {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`;
+    return this.http.get<any>(url);
+  }
 }
+
 /*import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';

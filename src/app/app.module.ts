@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { TopPeliculasComponent } from './top-peliculas/top-peliculas.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TopPeliculasComponent } from './top-peliculas/top-peliculas.component';
     AppHeaderComponent,
     PeliculasComponent,
     TopPeliculasComponent,
+    BuscadorComponent,
   ],
   imports: [
     BrowserModule,
