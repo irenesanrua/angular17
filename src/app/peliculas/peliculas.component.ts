@@ -13,7 +13,7 @@ export class PeliculasComponent {
 
   popularMovies: any[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.loadPopularMovies();

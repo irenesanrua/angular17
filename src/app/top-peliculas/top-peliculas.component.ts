@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class TopPeliculasComponent {
   topMovies: any[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.loadTopMovies();

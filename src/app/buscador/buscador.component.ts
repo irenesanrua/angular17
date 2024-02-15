@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../services/movie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-buscador',

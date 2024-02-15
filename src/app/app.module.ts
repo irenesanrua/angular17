@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { TopPeliculasComponent } from './top-peliculas/top-peliculas.component';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BuscadorComponent } from './buscador/buscador.component';
     PeliculasComponent,
     TopPeliculasComponent,
     BuscadorComponent,
+    DetallesPeliculaComponent,
   ],
   imports: [
     BrowserModule,

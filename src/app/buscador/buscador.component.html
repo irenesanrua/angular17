@@ -19,8 +19,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ movie.title }}</h5>
                 <p class="card-text">{{ movie.overview.slice(0, 200) + '...' }}</p>
-                <button (click)="obtenerDetalles(movie.id)" class="btn btn-primary">Más información</button>
-                <a [routerLink]="['/movie-details', movie.id]">Más información</a>
+                <a href="/detallespelicula/{{movie.id}}" class="btn btn-primary bg-success">Más información</a>
 
               </div>
             </div>

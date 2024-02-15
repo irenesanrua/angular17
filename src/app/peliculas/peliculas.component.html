@@ -15,7 +15,9 @@
       <div class="card-body mt-4">
         <h5 class="card-title">{{ movie.title }}</h5>
         <p class="card-text">{{ movie.overview.slice(0, 200) + '...' }}</p>
-        <a href="#" class="btn btn-success">Más información</a>
+        <div class="d-flex justify-content-center">
+          <a href="/detallespelicula/{{movie.id}}" class="btn btn-primary bg-success">Más información</a>
+        </div>
       </div>
     </div>
   </div>
