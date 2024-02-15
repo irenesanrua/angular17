@@ -1,29 +1,38 @@
 <div>
-    <h1>BUSCADOR</h1>
-    
-    <p>Escriba aquí su búsqueda:</p>
-    <div class="container-fluid">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="buscador"/>
-      <button (click)="buscar()" class="btn btn-outline-success" >Buscar</button>
-    </div>
+  <h1>BUSCADOR</h1>
   
-    <div *ngIf="movies.length > 0">
-      <div class="row">
-        <div *ngFor="let movie of movies" class="col-md-4 mb-4">
-          <div class="card">
-            <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="Cartel de la película">
-            <div class="card-body">
-              <h5 class="card-title">{{ movie.title }}</h5>
-              <p class="card-text">{{ movie.overview.slice(0, 200) + '...' }}</p>
-              <a [href]="'https://www.themoviedb.org/movie/' + movie.id" class="btn btn-primary">Más información</a>
+  <p>Escriba aquí su búsqueda:</p>
+  <div class="container-fluid">
+    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="buscador"/>
+    <button (click)="buscar()" class="btn btn-outline-success" >Buscar</button>
+  </div>
+
+  <div *ngIf="movies.length > 0">
+    <div class="row">
+      <div *ngFor="let movie of movies" class="col-md-4 mb-4"> <!-- Cambiado a col-md-4 para tres columnas -->
+        <div class="card">
+          <div class="row g-0"> <!-- Agrego una fila dentro de la tarjeta -->
+            <div class="col-md-4">
+              <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="img-fluid rounded-start" alt="Cartel de la película">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{ movie.overview.slice(0, 200) + '...' }}</p>
+                <button (click)="obtenerDetalles(movie.id)" class="btn btn-primary">Más información</button>
+                <a [routerLink]="['/movie-details', movie.id]">Más información</a>
+
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-    <div *ngIf="movies.length === 0">
-      <p>No se encontraron resultados</p>
-    </div>
   </div>
+
+  <div *ngIf="movies.length === 0">
+    <p>No se encontraron resultados</p>
+  </div>
+</div>
+
   

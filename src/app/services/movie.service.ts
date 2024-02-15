@@ -26,6 +26,11 @@ export class MovieService {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`;
     return this.http.get<any>(url);
   }
+
+  obtenerDetalles(movieId: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}`;
+    return this.http.get<any>(url);
+  }
 }
 
 /*import { Injectable } from '@angular/core';

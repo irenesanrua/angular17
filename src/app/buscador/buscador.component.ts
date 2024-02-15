@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { MovieService } from '../services/movie.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-buscador',
@@ -21,5 +18,13 @@ export class BuscadorComponent {
         this.movies = data.results;
       });
   }
+
+  obtenerDetalles(movieId: number): void {
+    this.movieService.obtenerDetalles(movieId)
+      .subscribe((detalle: any) => {
+        console.log(detalle); // Aquí puedes manejar los detalles de la película, por ejemplo, abrir un modal o navegar a una nueva página.
+      });
+  }
 }
+
 
