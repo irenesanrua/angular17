@@ -1,0 +1,32 @@
+<div class="container">
+
+<form [formGroup]="myForm">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input formControlName="nombre" class="form-control" type="text"/>
+        <p *ngIf="myForm.get('nombre')!.touched && myForm.get('nombre')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input formControlName="email" class="form-control" type="text"/>
+        <p *ngIf="myForm.get('email')!.touched && myForm.get('email')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input formControlName="telefono" class="form-control" type="text"/>
+        <p *ngIf="myForm.get('telefono')!.touched && myForm.get('telefono')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+        <p *ngIf="myForm.get('telefono')!.hasError('maxlength')" class="form-text">La longitud máxima de este campo es de 12</p>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Direccion</label>
+        <input formControlName="direccion" class="form-control" type="text"/>
+        <p *ngIf="myForm.get('direccion')!.touched && myForm.get('direccion')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+
+</form>
+
+</div>

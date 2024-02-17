@@ -7,11 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { HttpClientModule } from '@angular/common/http';
 //import {NgbModule} from @ng-bootstrap/ng-bootstrap,
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { TopPeliculasComponent } from './top-peliculas/top-peliculas.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula
     TopPeliculasComponent,
     BuscadorComponent,
     DetallesPeliculaComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
    // NgbModule,
   ],
   providers: [],
