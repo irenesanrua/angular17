@@ -1,29 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card mb-3">
-        <div class="row g-0">
-          
-          <div class="col-md-8">
-            
-            <div class="card-body">
-              <h1 class="card-title text-center"><strong>{{ movie.title }}</strong></h1>
-              <p class="card-text text-center">{{ movie.overview }}</p>
-              <p class="card-text text-left"><strong>Puntuación media:</strong> {{ (movie.vote_average).toFixed(2)}}</p>
-              <p class="card-text"><strong>Fecha de lanzamiento:</strong> {{ movie.release_date }}</p>
-              <p class="card-text"><strong>Lenguaje original:</strong> {{ movie.original_language }}</p>
-              <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-primary bg-success">Ir al home</a>
-              </div>
-            </div>
-
-          </div>
-<div class="col-md-4">
-            <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="película" class="img-fluid">
-          </div>
-          
+  <h4 class="my-4 fw-bold">Detalles de la Película:</h4>
+  <div *ngIf="pelicula" class="card bg-success text-white mb-3">
+    <div class="card-header">{{ pelicula.title }}</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + pelicula.poster_path" class="img-fluid rounded" alt="Cartel de la película">
+        </div>
+        <div class="col-md-8">
+          <p class="card-text"><span class="fw-bold text-white">Descripción:</span> {{ pelicula.overview }}</p>
+          <p class="card-text"><span class="fw-bold text-white">Calificación:</span> {{ pelicula.vote_average }}</p>
+          <p class="card-text"><span class="fw-bold text-white">Géneros:</span> {{ getGenresString(pelicula.genres) }}</p>
+          <p class="card-text"><span class="fw-bold text-white">Duración:</span> {{ pelicula.runtime }} minutos</p>
+          <p class="card-text"><span class="fw-bold text-white">Director:</span> {{ pelicula.director }}</p>
+          <p class="card-text"><span class="fw-bold text-white">Reparto:</span> {{ pelicula.cast.join(', ') }}</p>
+          <p class="card-text"><span class="fw-bold text-white">Fecha de lanzamiento:</span> {{ pelicula.release_date }}</p>
+          <button (click)="openModal()" class="btn btn-primary">Ver Tráiler</button>
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="!pelicula">
+    <p class="text-center">Cargando...</p>
+  </div>
+  <div *ngIf="comentarios.length > 0" class="mt-4">
+    <h5>Comentarios y Reseñas:</h5>
+    <ul>
+      <li *ngFor="let comentario of comentarios">{{ comentario }}</li>
+    </ul>
+  </div>
+</div>
+<div [ngStyle]="{'display': showModal ? 'block' : 'none'}" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close">×</span>
+    <iframe [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>

@@ -31,64 +31,39 @@ export class MovieService {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}`;
     return this.http.get<any>(url);
   }
-}
 
-/*import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
-// Importamos la interfaz Movie, que define los campos de una película
-import { Movie } from './movie.model';
-
-// Definimos el decorador @Injectable, que indica que este servicio puede ser inyectado en otros componentes
-@Injectable({
-  providedIn: 'root'
-})
-// Definimos la clase MovieService, que tendrá los métodos para obtener las películas
-export class MovieService {
-  // Definimos la URL base de la API de TMDB
-  private baseUrl = 'https://api.themoviedb.org/3/movie';
-  // Definimos la clave de la API, que se usará como parámetro en las peticiones
-  private apiKey = 'e79fbfbf56f5c1d7cbb5c4d71bbc9693';
-
-  // Inyectamos el HttpClient en el constructor del servicio
-  constructor(private http: HttpClient) { }
-
-  // Definimos un método para obtener las películas populares, que devuelve un observable de tipo Movie[]
-  getPopularMovies(): Observable<Movie[]> {
-    // Definimos la URL completa de la petición, añadiendo el parámetro api_key y el número de página
-    const url = ${this.baseUrl}/popular?api_key=${this.apiKey}&page=1;
-    // Hacemos la petición GET usando el HttpClient y el operador map, que transforma la respuesta en un array de películas
-    return this.http.get(url).pipe(
-      map((response: any) => response.results as Movie[])
-    );
+  obtenerComentarios(movieId: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.apiKey}&language=en-US&page=1`;
+    return this.http.get<any>(url);
   }
-}
-*/
 
-/*
-@Injectable({})
-export class MovieService {
-  private apiKey = 'e79fbfbf56f5c1d7cbb5c4d71bbc9693';
-  public url: string;
-
-  constructor(private http: HttpClient) { }
-
-  getMovies(): Observable<any[]> {
-    this.url = `https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&page=1`;
-    return this.http.get<any[]>(this.url)
-      .pipe(
-        catchError(this.handleError)
-      );
+  obtenerTrailerPelicula(movieId: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${this.apiKey}`;
+    return this.http.get<any>(url);
   }
-  private handleError(error: any): Observable<never> {
-    console.error('Error al obtener películas:', error);
-    return throwError(error);
+
+  // Método para obtener la lista de películas de la watchlist
+  getWatchlistMovies(): Observable<any> {
+    const options = {
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      }
+    };
+    const url = 'https://api.themoviedb.org/3/account/20955958/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc';
+    return this.http.get<any>(url, options);
   }
+
+  getFavoriteMovies(): Observable<any> {
+    const options = {
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      }
+    };
+    const url = 'https://api.themoviedb.org/3/account/20955958/favorite/movies?language=en-US&page=1&sort_by=created_at.asc';
+    return this.http.get<any>(url, options);
+  }
+  
 }
-
-*/
-
-
 

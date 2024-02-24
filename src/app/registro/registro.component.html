@@ -16,7 +16,9 @@
         <label class="form-label">Email</label>
         <input formControlName="email" class="form-control" type="text"/>
         <p *ngIf="myForm.get('email')!.touched && myForm.get('email')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+        <p *ngIf="myForm.get('email')!.touched && myForm.get('email')!.hasError('pattern')" class="form-text">Por favor, introduce un correo electrónico válido</p>
       </div>
+      
   
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
@@ -28,6 +30,7 @@
         <label class="form-label">Repita su contraseña</label>
         <input formControlName="password2" class="form-control" type="password"/>
         <p *ngIf="myForm.get('password2')!.touched && myForm.get('password2')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+        <p *ngIf="myForm.hasError('mismatch')" class="form-text">Las contraseñas no coinciden</p>
       </div>
   
       <div class="mb-3">
@@ -41,6 +44,7 @@
         <label class="form-label">Direccion</label>
         <input formControlName="direccion" class="form-control" type="text"/>
         <p *ngIf="myForm.get('direccion')!.touched && myForm.get('direccion')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+        <p *ngIf="myForm.get('direccion')!.hasError('minlength')" class="form-text">La longitud mínima de este campo es de 12</p>
       </div>
   
       <button type="submit" class="btn btn-primary">Enviar</button>

@@ -1,0 +1,27 @@
+<div class="container">
+    <h4 class="my-4 fw-bold">Mi Lista de Películas:</h4>
+    <div *ngIf="watchlistMovies.length > 0" class="row">
+      <div class="col-md-6" *ngFor="let pelicula of watchlistMovies">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="'https://image.tmdb.org/t/p/w500/' + pelicula.poster_path" class="img-fluid rounded-start" alt="Cartel de la película">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ pelicula.title }}</h5>
+                <p class="card-text">{{ pelicula.overview.slice(0, 200) + '...' }}</p>
+                <p class="card-text"><small class="text-muted">Calificación: {{ pelicula.vote_average }}</small></p>
+                <div class="d-flex justify-content-center"></div>
+                <a href="/detallespelicula/{{pelicula.id}}" class="btn btn-primary bg-success">Ver detalles</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="watchlistMovies.length === 0">
+      <p class="text-center">Cargando...</p>
+    </div>
+  </div>
+  

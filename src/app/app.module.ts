@@ -14,6 +14,8 @@ import { TopPeliculasComponent } from './top-peliculas/top-peliculas.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
 import { RegistroComponent } from './registro/registro.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { RegistroComponent } from './registro/registro.component';
     BuscadorComponent,
     DetallesPeliculaComponent,
     RegistroComponent,
+    WatchlistComponent,
+    FavoritosComponent,
   ],
   imports: [
     BrowserModule,

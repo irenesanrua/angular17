@@ -26,34 +26,51 @@ export class RegistroComponent implements OnInit {
   public registros: Array<Registro> = [];
 
   constructor(public fb: FormBuilder) {
+    const email_regex = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$';
     this.myForm = this.fb.group({
       username: new FormControl('', Validators.required), 
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.pattern(email_regex)]),
       password: new FormControl('', Validators.required),
       password2: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       fecha_nacimiento: new FormControl('', Validators.required),
-      direccion: new FormControl('', Validators.required),
+      direccion: new FormControl('', [Validators.required, Validators.minLength(12)]),
       telefono: new FormControl('', [Validators.required, Validators.maxLength(12)]),
-    });
+    }, { validator: this.passwordMatchValidator });
   }
 
   ngOnInit() {}
 
+  passwordMatchValidator(formGroup: FormGroup) {
+    const passwordControl = formGroup.get('password');
+    const password2Control = formGroup.get('password2');
+  
+    if (passwordControl && password2Control) {
+      return passwordControl.value === password2Control.value ? null : { mismatch: true };
+    }
+  
+    return { mismatch: true };
+  }
+  
+
   saveData() {
-    console.log(this.myForm.value.email);
-    const registro = new Registro(
-      this.myForm.value.username,
-      this.myForm.value.email,
-      this.myForm.value.password,
-      this.myForm.value.password2,
-      this.myForm.value.rol,
-      this.myForm.value.nombre,
-      this.myForm.value.fecha_nacimiento,
-      this.myForm.value.direccion,
-      this.myForm.value.telefono
-    );
-    this.registros.push(registro);
-    this.myForm.reset();
+    if (this.myForm.valid) {
+      console.log(this.myForm.value.email);
+      const registro = new Registro(
+        this.myForm.value.username,
+        this.myForm.value.email,
+        this.myForm.value.password,
+        this.myForm.value.password2,
+        this.myForm.value.rol,
+        this.myForm.value.nombre,
+        this.myForm.value.fecha_nacimiento,
+        this.myForm.value.direccion,
+        this.myForm.value.telefono
+      );
+      this.registros.push(registro);
+      this.myForm.reset();
+    } else {
+      console.log('Formulario inválido');
+    }
   }
 }
