@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,25 +7,42 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss']
 })
-export class BuscadorComponent {
+export class BuscadorComponent implements OnInit {
   movies: any[] = [];
+  peliculas: any[] = [];
   buscador: string = '';
+  terminoBusqueda!: string;
 
   constructor(private movieService: MovieService) {}
 
-  buscar(): void {
-    this.movieService.buscarPeliculas(this.buscador)
-      .subscribe((data: any) => {
-        this.movies = data.results;
-      });
+  ngOnInit(): void {
+    const searchTerm = this.movieService.busqueda;
+    if (searchTerm) {
+      this.buscador = searchTerm;
+      this.getMovies(searchTerm);
+    }
   }
 
+  buscar(): void {
+    if (this.buscador.trim() !== '') {
+      this.movieService.buscarPeliculas(this.buscador)
+        .subscribe((data: any) => {
+          this.movies = data.results;
+        });
+    }
+  }
+
+  getMovies(query: string): void {
+    this.movieService.buscarPeliculas(query).subscribe(data => {
+      this.peliculas = data.results;
+    }, error => {
+      console.error(error);
+    });
+  }
   obtenerDetalles(movieId: number): void {
     this.movieService.obtenerDetalles(movieId)
       .subscribe((detalle: any) => {
-        console.log(detalle); // Aquí puedes manejar los detalles de la película, por ejemplo, abrir un modal o navegar a una nueva página.
+        console.log(detalle); 
       });
   }
 }
-
-

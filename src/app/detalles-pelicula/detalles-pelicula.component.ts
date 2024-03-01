@@ -28,13 +28,18 @@ export class DetallesPeliculaComponent {
           vote_average: data.vote_average,
           genres: data.genres,
           runtime: data.runtime,
-          director: 'Nombre del Director', // Ajusta esto según tus datos reales
-          cast: ['Actor 1', 'Actor 2', 'Actor 3'], // Ajusta esto según tus datos reales
-          release_date: data.release_date
+          release_date: data.release_date,
+          cast: []
         };
+        // Obtener elenco de la película
+        this.peliculaService.obtenerActores(this.movie_id).subscribe((actores: any) => {
+          this.pelicula.cast = actores.cast.map((actor: any) => actor.name);
+        });
+        // Obtener comentarios de la película
         this.peliculaService.obtenerComentarios(this.movie_id).subscribe((comentarios: any) => {
           this.comentarios = comentarios.results.slice(0, 4).map((comentario: any) => comentario.content);
         });
+        // Obtener tráiler de la película
         this.peliculaService.obtenerTrailerPelicula(this.movie_id).subscribe((trailers: any) => {
           const trailer = trailers.results.find((video: any) => video.type === 'Trailer');
           if (trailer) {
@@ -48,7 +53,6 @@ export class DetallesPeliculaComponent {
   getGenresString(genres: any[]): string {
     return genres.map(genre => genre.name).join(', ');
   }
-  
 
   openModal() {
     this.showModal = true;

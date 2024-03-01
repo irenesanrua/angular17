@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MovieService } from '../services/movie.service';
+import { DjangoService } from '../services/djangoservice.service';
 
 // Define la clase Registro
 class Registro {

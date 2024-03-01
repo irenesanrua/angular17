@@ -12,7 +12,6 @@
           <p class="card-text"><span class="fw-bold text-white">Calificación:</span> {{ pelicula.vote_average }}</p>
           <p class="card-text"><span class="fw-bold text-white">Géneros:</span> {{ getGenresString(pelicula.genres) }}</p>
           <p class="card-text"><span class="fw-bold text-white">Duración:</span> {{ pelicula.runtime }} minutos</p>
-          <p class="card-text"><span class="fw-bold text-white">Director:</span> {{ pelicula.director }}</p>
           <p class="card-text"><span class="fw-bold text-white">Reparto:</span> {{ pelicula.cast.join(', ') }}</p>
           <p class="card-text"><span class="fw-bold text-white">Fecha de lanzamiento:</span> {{ pelicula.release_date }}</p>
           <button (click)="openModal()" class="btn btn-primary">Ver Tráiler</button>

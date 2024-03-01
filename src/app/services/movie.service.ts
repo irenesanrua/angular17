@@ -9,6 +9,7 @@ export class MovieService {
   private apiKey = 'e79fbfbf56f5c1d7cbb5c4d71bbc9693';
   private apiUrl = 'https://api.themoviedb.org/3/movie/popular';
   private apiUrl2 = 'https://api.themoviedb.org/3/movie/top_rated';
+  busqueda: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +28,15 @@ export class MovieService {
     return this.http.get<any>(url);
   }
 
+  setPalabraBusqueda(palabra: string) {
+    this.busqueda = palabra;
+  }
+
+  getPalabraBusqueda() {
+    return this.busqueda;
+    ;
+  }
+
   obtenerDetalles(movieId: number): Observable<any> {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}`;
     return this.http.get<any>(url);
@@ -34,6 +44,11 @@ export class MovieService {
 
   obtenerComentarios(movieId: number): Observable<any> {
     const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.apiKey}&language=en-US&page=1`;
+    return this.http.get<any>(url);
+  }
+
+  obtenerActores(movieId: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${this.apiKey}`;
     return this.http.get<any>(url);
   }
 

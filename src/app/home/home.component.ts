@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   loadPopularMovies() {
     this.movieService.getPopularMovies().subscribe(response => {
       // Ordenar las películas por popularidad
-      this.popularMovies = response.results.sort((a: any, b: any) => b.popularity - a.popularity).slice(0, 3);
+      this.popularMovies = response.results.sort((a: any, b: any) => b.popularity - a.popularity).slice(0, 5);
     });
   }
 }

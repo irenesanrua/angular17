@@ -9,9 +9,9 @@
 
   <div *ngIf="movies.length > 0">
     <div class="row">
-      <div *ngFor="let movie of movies" class="col-md-4 mb-4"> <!-- Cambiado a col-md-4 para tres columnas -->
+      <div *ngFor="let movie of movies" class="col-md-4 mb-4">
         <div class="card">
-          <div class="row g-0"> <!-- Agrego una fila dentro de la tarjeta -->
+          <div class="row g-0"> 
             <div class="col-md-4">
               <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="img-fluid rounded-start" alt="Cartel de la película">
             </div>

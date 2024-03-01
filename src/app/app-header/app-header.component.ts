@@ -25,7 +25,10 @@ export class AppHeaderComponent implements OnInit {
     });
   }
 
-  goToSearch(): void {
+  busqueda: string = '';
+
+  buscar() {
+    this.movieService.setPalabraBusqueda(this.busqueda);
     this.router.navigate(['/buscador']);
   }
   
