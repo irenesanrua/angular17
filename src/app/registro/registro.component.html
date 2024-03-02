@@ -1,5 +1,6 @@
 <div class="container">
-    <form [formGroup]="myForm">
+  <h2>Registro usuario</h2>
+    <form [formGroup]="myForm" (ngSubmit)="saveData()">
       <div class="mb-3">
         <label class="form-label">Nombre de usuario</label>
         <input formControlName="username" class="form-control" type="text"/>
@@ -22,8 +23,8 @@
   
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
-        <input formControlName="password" class="form-control" type="password"/>
-        <p *ngIf="myForm.get('password')!.touched && myForm.get('password')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+        <input formControlName="password1" class="form-control" type="password"/>
+        <p *ngIf="myForm.get('password1')!.touched && myForm.get('password1')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
       </div>
   
       <div class="mb-3">
@@ -31,6 +32,12 @@
         <input formControlName="password2" class="form-control" type="password"/>
         <p *ngIf="myForm.get('password2')!.touched && myForm.get('password2')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
         <p *ngIf="myForm.hasError('mismatch')" class="form-text">Las contraseñas no coinciden</p>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Fecha de Nacimiento</label>
+        <input formControlName="fecha_nacimiento" class="form-control" type="date"/>
+        <p *ngIf="myForm.get('fecha_nacimiento')!.touched && myForm.get('fecha_nacimiento')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
       </div>
   
       <div class="mb-3">
@@ -47,7 +54,7 @@
         <p *ngIf="myForm.get('direccion')!.hasError('minlength')" class="form-text">La longitud mínima de este campo es de 12</p>
       </div>
   
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Enviar</button>
     </form>
   </div>
   

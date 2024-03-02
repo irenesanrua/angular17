@@ -8,6 +8,7 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula.component';
 import { RegistroComponent } from './registro/registro.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'favoritos', component: FavoritosComponent },
   { path: 'detallespelicula/:id', component: DetallesPeliculaComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/home' } // Redirigir a la página de inicio si la ruta no se encuentra
 ];
 

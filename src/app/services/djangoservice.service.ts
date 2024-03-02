@@ -15,7 +15,7 @@ export class DjangoService {
   getAll(): Observable<any> {
     return this.http.get<any[]>(`${baseUrl}/registrar/usuario`);
   }
-  registrar(datosRegistro: any): Observable<any> {
+  registrarUsuario(datosRegistro: any): Observable<any> {
     return this.http.post<any>(this.djangoUrl, datosRegistro)
       .pipe(
         catchError(error => {

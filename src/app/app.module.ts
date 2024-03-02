@@ -16,6 +16,7 @@ import { DetallesPeliculaComponent } from './detalles-pelicula/detalles-pelicula
 import { RegistroComponent } from './registro/registro.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
     RegistroComponent,
     WatchlistComponent,
     FavoritosComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

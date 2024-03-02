@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Login</h2>
+    <form [formGroup]="myLogin" (ngSubmit)="loginUsuario()">
+      <div class="mb-3">
+        <label class="form-label">Nombre de usuario</label>
+        <input formControlName="username" class="form-control" type="text"/>
+        <p *ngIf="myLogin.get('username')!.touched && myLogin.get('username')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input formControlName="password1" class="form-control" type="password"/>
+        <p *ngIf="myLogin.get('password1')!.touched && myLogin.get('password1')!.hasError('required')" class="form-text">Este campo es obligatorio</p>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!myLogin.valid">Acceder</button>
+    </form>
+
+</div>
+
