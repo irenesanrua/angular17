@@ -14,6 +14,8 @@ export class DetallesPeliculaComponent {
   comentarios: string[] = [];
   showModal: boolean = false;
   trailerUrl: string = '';
+  mensaje: string= '';
+  mensajefav: string= '';
 
   constructor(private peliculaService: MovieService, private route: ActivatedRoute) { }
 
@@ -61,4 +63,36 @@ export class DetallesPeliculaComponent {
   closeModal() {
     this.showModal = false;
   }
+
+
+  agregarAWatchlist() {
+    this.peliculaService.agregarAWatchlist(this.movie_id).subscribe(
+      response => {
+        console.log('Película agregada a la watchlist:', response);
+        this.mensaje = 'Película agregada correctamente a la watchlist';
+
+      },
+      error => {
+        console.error('Error al agregar película a la watchlist:', error);
+        this.mensaje = 'Error al agregar película a la watchlist';
+
+      }
+    );
+  }  
+
+  agregarAFavoritos() {
+    this.peliculaService.agregarAFavoritos(this.movie_id).subscribe(
+      response => {
+        console.log('Película agregada a favoritos:', response);
+        this.mensajefav = 'Película agregada correctamente a favoritos';
+
+      },
+      error => {
+        console.error('Error al agregar película a favoritos:', error);
+        this.mensajefav = 'Error al agregar película a favoritos';
+
+      }
+    );
+  }  
+
 }

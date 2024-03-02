@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -80,5 +82,41 @@ export class MovieService {
     return this.http.get<any>(url, options);
   }
   
-}
+  agregarAWatchlist(movieId: number): Observable<any> {
+    const url = 'https://api.themoviedb.org/3/account/20955958/watchlist';
+    const options = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      },
+    };
+    const body = {
+      "media_type": "movie",
+      "media_id": movieId,
+      "watchlist": true
+    };
+  
+    return this.http.post<any>(url, body, options);
+  }
 
+  agregarAFavoritos(movieId: number): Observable<any> {
+    const url = 'https://api.themoviedb.org/3/account/20955958/favorite';
+    const options = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      },
+    };
+    const body = {
+      "media_type": "movie",
+      "media_id": movieId,
+      "favorite": true
+    };
+  
+    return this.http.post<any>(url, body, options);
+  }
+
+  
+  }
