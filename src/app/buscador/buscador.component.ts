@@ -19,7 +19,8 @@ export class BuscadorComponent implements OnInit {
     const searchTerm = this.movieService.busqueda;
     if (searchTerm) {
       this.buscador = searchTerm;
-      this.getMovies(searchTerm);
+      //this.getMovies(searchTerm);
+      this.buscar()
     }
   }
 

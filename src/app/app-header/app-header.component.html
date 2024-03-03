@@ -1,24 +1,40 @@
 <div class="topnav">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4CAF50;">
+  <div class="container-fluid">
   <img
-    alt="logo"
-    class="logo col-2"
     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmkF929L_QFvEMzgZGJxxbOriAQ-KYZQ1xHw&usqp=CAU"
-    width="50"
-    height="120"
+    alt="Logo" width="110" height="100" style="margin-right: 10px;"
   />
-  <a class="active" routerLink="/home">Inicio</a>
-  <a routerLink="/top-peliculas">Top Peliculas</a>
-  <a routerLink="/peliculas">Populares</a>
-  <a routerLink="/watchlist">Watchlist</a>
-  <a routerLink="/favoritos">Favoritos</a>
-  <a routerLink="/registro">Regístrese aquí</a>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/buscador" class="btn btn-outline-success">BUSCADOR</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="active" routerLink="/home">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/top-peliculas">Top Peliculas</a>
+      </li>
+    <li class="nav-item">
+        <a routerLink="/peliculas">Populares</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/watchlist">Watchlist</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/favoritos">Favoritos</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/registro">Regístrese aquí</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/login">Login</a>
+      </li>
+     </ul>  
+    </div>    
   <form class="d-flex" (submit)="buscar()">
-    <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="searchTerm">
-    <button class="btn btn-outline-success" type="submit">Buscar</button>
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="searchTerm">
+    <button class="btn btn-success" type="submit">Buscar</button>
   </form>
-
-
+</div>
+</nav>
 </div>
 
