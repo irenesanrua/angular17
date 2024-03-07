@@ -8,11 +8,13 @@ import {HttpParams} from "@angular/common/http";
   providedIn: 'root'
 })
 export class LoginService {
-  private token_endpoint = 'http://127.0.0.1:8000/oauth2/token/';
+  private token_endpoint = 'http://irenesanrua.pythonanywhere.com/oauth2/token/';
+  //private token_endpoint = 'http://127.0.0.1:8000/oauth2/token/'; desde local
 
   constructor(private http: HttpClient) { }
 
   loginUsuario(datosLogin: any): Observable<any> {
+    //creamos un map donde añadimos lo necesario para crear el token; como en oauth
     const obtenerToken = new HttpParams()
     .set('grant_type', 'password')
     .set('username', datosLogin['usuario'])
@@ -23,7 +25,7 @@ export class LoginService {
     const cabecera = {
       'Content-Type': 'application/x-www-form-urlencoded',
     }
-
+//headers para datos relativos a la conexion como obtener el token, configuramos para la conexion TCP
     return this.http.post<any>(this.token_endpoint,obtenerToken.toString(),{headers:cabecera})
       .pipe(
         catchError(error => {

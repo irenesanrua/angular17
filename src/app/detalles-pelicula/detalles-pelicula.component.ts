@@ -93,6 +93,36 @@ export class DetallesPeliculaComponent {
 
       }
     );
+  }
+
+  eliminarDeWatchlist() {
+    this.peliculaService.eliminarDeWatchlist(this.movie_id).subscribe(
+      response => {
+        console.log('Película eliminada de la watchlist:', response);
+        this.mensaje = 'Película eliminada de la watchlist';
+
+      },
+      error => {
+        console.error('Error al eliminar película a la watchlist:', error);
+        this.mensaje = 'Error al eliminar película a la watchlist';
+
+      }
+    );
+  }  
+
+  eliminarDeFavoritos() {
+    this.peliculaService.eliminarDeFavoritos(this.movie_id).subscribe(
+      response => {
+        console.log('Película eliminada a favoritos:', response);
+        this.mensajefav = 'Película eliminada de favoritos';
+
+      },
+      error => {
+        console.error('Error al eliminar película a favoritos:', error);
+        this.mensajefav = 'Error al eliminar película a favoritos';
+
+      }
+    );
   }  
 
 }

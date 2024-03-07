@@ -17,11 +17,13 @@
           <button (click)="openModal()" class="btn btn-primary">Ver Tráiler</button>
           <div>
             <button (click)="agregarAWatchlist()" class="btn btn-info">Agregar a Watchlist</button>
-            <span class="badge rounded-pill bg-warning text-dark">{{ mensaje }}</span>
+            <button  (click)="eliminarDeWatchlist()"class="btn btn-danger">Eliminar de Watchlist</button>
+            <span class="badge rounded-pill bg-light text-dark">{{ mensaje }}</span>
           </div>
           <div>
-            <button (click)="agregarAFavoritos()" class="btn btn-danger">Agregar a Favoritos</button>
-            <span class="badge rounded-pill bg-warning text-dark">{{ mensajefav }}</span>
+            <button (click)="agregarAFavoritos()" class="btn btn-warning">Agregar a Favoritos</button>
+            <button class="btn btn-secondary" (click)="eliminarDeFavoritos()">Eliminar de Favoritos</button>
+            <span class="badge rounded-pill bg-light text-dark">{{ mensajefav }}</span>
           </div>
           
 

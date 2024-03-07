@@ -70,6 +70,8 @@ export class RegistroComponent implements OnInit {
     .subscribe(
       response => {
         console.log("datos enviados");
+        alert("Se ha registrado con éxito");
+        this.router.navigate(['home']);
         const datosLogin = {
           'usuario':registro['username'],
           'pass':registro['password1']

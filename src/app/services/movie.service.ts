@@ -31,11 +31,11 @@ export class MovieService {
   }
 
   setPalabraBusqueda(palabra: string) {
-    this.busqueda = palabra;
+    this.busqueda = palabra; //asignamos a la busqueda el parametro
   }
 
   getPalabraBusqueda() {
-    return this.busqueda;
+    return this.busqueda; //obtenemos el valor ya asignado
     ;
   }
 
@@ -59,7 +59,7 @@ export class MovieService {
     return this.http.get<any>(url);
   }
 
-  // Método para obtener la lista de películas de la watchlist
+  // para obtener listado de películas de la watchlist y de favoritos
   getWatchlistMovies(): Observable<any> {
     const options = {
       headers: {
@@ -81,7 +81,7 @@ export class MovieService {
     const url = 'https://api.themoviedb.org/3/account/20955958/favorite/movies?language=en-US&page=1&sort_by=created_at.asc';
     return this.http.get<any>(url, options);
   }
-  
+  // agregar y eliminar de la watchlist
   agregarAWatchlist(movieId: number): Observable<any> {
     const url = 'https://api.themoviedb.org/3/account/20955958/watchlist';
     const options = {
@@ -100,6 +100,25 @@ export class MovieService {
     return this.http.post<any>(url, body, options);
   }
 
+  eliminarDeWatchlist(movieId: number): Observable<any> {
+    const url = 'https://api.themoviedb.org/3/account/20955958/watchlist';
+    const options = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      },
+    };
+    const body = {
+      "media_type": "movie",
+      "media_id": movieId,
+      "watchlist": false
+    };
+  
+    return this.http.post<any>(url, body, options);
+  }
+
+  //agregar y elimianr de mi lista de favoritos
   agregarAFavoritos(movieId: number): Observable<any> {
     const url = 'https://api.themoviedb.org/3/account/20955958/favorite';
     const options = {
@@ -113,6 +132,24 @@ export class MovieService {
       "media_type": "movie",
       "media_id": movieId,
       "favorite": true
+    };
+  
+    return this.http.post<any>(url, body, options);
+  }
+
+  eliminarDeFavoritos(movieId: number): Observable<any> {
+    const url = 'https://api.themoviedb.org/3/account/20955958/favorite';
+    const options = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzlmYmZiZjU2ZjVjMWQ3Y2JiNWM0ZDcxYmJjOTY5MyIsInN1YiI6IjY1YjhlMDg5OGMzMTU5MDE3YmYyNDI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rGeNmNlLhNUFY-YxNO3Lmp633q7ap2naUyyRXbaz_j4'
+      },
+    };
+    const body = {
+      "media_type": "movie",
+      "media_id": movieId,
+      "favorite": false
     };
   
     return this.http.post<any>(url, body, options);
