@@ -25,7 +25,7 @@ export class AppHeaderComponent implements OnInit {
     });
   }
 
-  busqueda: string = '';
+  busqueda: string = ''; //después asignamos este valor con ngmodel
 
   buscar() {
     this.movieService.setPalabraBusqueda(this.busqueda);

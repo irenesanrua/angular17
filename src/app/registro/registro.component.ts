@@ -63,8 +63,8 @@ export class RegistroComponent implements OnInit {
   
   saveData() {
     if (this.myForm.valid) {
-      let registro=this.myForm.getRawValue();
-      registro.rol=2;
+      let registro=this.myForm.getRawValue(); //para obtener lo valores en crudo, un Json
+      registro.rol=2; //añadimo el rol al objeto registro
       
     this.DjangoService.registrarUsuario(registro)
     .subscribe(
